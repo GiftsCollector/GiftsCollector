@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --tg-theme-bg-color: #1F1F1F;
+    --tg-theme-text-color: #FFFFFF;
+    --tg-theme-button-color: #2AABEE;
+    --tg-theme-button-text-color: #FFFFFF;
+    --tg-theme-secondary-bg-color: #272727;
+}
+
+body {
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+#app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    padding: 8px;
+    border-radius: 20px 0 0 20px;
+    border: none;
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+    width: 150px;
+}
+
+.search-button {
+    border-radius: 0 20px 20px 0;
+    padding: 8px 10px;
+    border: none;
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.tab {
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    color: var(--tg-theme-text-color);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.tab.active {
+    opacity: 1;
+    border-bottom: 2px solid var(--tg-theme-button-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.filters {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.filters select {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.collection-card {
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.collection-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.collection-info {
+    padding: 10px;
+}
+
+.collection-info h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.collection-info p {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+.view-button {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action-buttons {
+    margin-bottom: 15px;
+}
+
+.create-button {
+    padding: 8px 15px;
+    border: none;
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.wallet-info {
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.balance {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.deposit-button, .withdraw-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.transaction-history {
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.transaction-history h3 {
+    margin-bottom: 10px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    opacity: 0.7;
+}

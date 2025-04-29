@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Collections</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">Gift Collections</div>
+            <div class="search">
+                <input type="text" placeholder="Search collections...">
+                <button class="search-button">🔍</button>
+            </div>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="explore">Explore</button>
+            <button class="tab" data-tab="my-collections">My Collections</button>
+            <button class="tab" data-tab="wallet">Wallet</button>
+        </div>
+        
+        <div class="content-area">
+            <div id="explore" class="tab-content active">
+                <div class="filters">
+                    <select id="type-filter">
+                        <option value="">All Types</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Standard">Standard</option>
+                    </select>
+                    <select id="symbol-filter">
+                        <option value="">All Symbols</option>
+                        <option value="Heart">Heart</option>
+                        <option value="Star">Star</option>
+                    </select>
+                </div>
+                
+                <div class="collections-grid">
+                    <!-- Sample collections will go here -->
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/150" alt="Sample Collection">
+                        <div class="collection-info">
+                            <h3>Premium Collection</h3>
+                            <p>5 gifts • 10 TON</p>
+                            <button class="view-button">View</button>
+                        </div>
+                    </div>
+                    
+                    <div class="collection-card">
+                        <img src="https://via.placeholder.com/150" alt="Sample Collection">
+                        <div class="collection-info">
+                            <h3>Special Edition</h3>
+                            <p>3 gifts • 5 TON</p>
+                            <button class="view-button">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="my-collections" class="tab-content">
+                <div class="action-buttons">
+                    <button class="create-button">Create Collection</button>
+                </div>
+                <div class="collections-grid">
+                    <!-- User's collections will be loaded here -->
+                    <p class="empty-message">You don't have any collections yet.</p>
+                </div>
+            </div>
+            
+            <div id="wallet" class="tab-content">
+                <div class="wallet-info">
+                    <h2>Your TON Balance</h2>
+                    <div class="balance">0.00 TON</div>
+                    <button class="deposit-button">Deposit TON</button>
+                    <button class="withdraw-button">Withdraw TON</button>
+                </div>
+                <div class="transaction-history">
+                    <h3>Transaction History</h3>
+                    <div class="transactions">
+                        <!-- Transactions will be loaded here -->
+                        <p class="empty-message">No transactions yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
