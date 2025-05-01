@@ -11,12 +11,12 @@
     <div class="app-container">
         <!-- Header with close and menu buttons -->
         <header class="app-header">
-            <button class="icon-btn close-btn">
-                <i class="fas fa-times"></i>
+            <button class="icon-btn close-btn" id="back-button">
+                <i class="fas fa-arrow-left"></i>
             </button>
-            <div class="app-title">Collectible Gifts Bot</div>
-            <button class="icon-btn menu-btn">
-                <i class="fas fa-ellipsis-v"></i>
+            <div class="app-title">Collectible Gifts</div>
+            <button class="icon-btn menu-btn" id="refresh-button">
+                <i class="fas fa-sync-alt"></i>
             </button>
         </header>
 
@@ -28,16 +28,13 @@
                 <button class="action-btn add-btn" id="add-funds-btn">
                     <i class="fas fa-plus"></i>
                 </button>
-                <button class="action-btn subtract-btn" id="subtract-funds-btn">
-                    <i class="fas fa-minus"></i>
-                </button>
             </div>
             <div class="user-info">
                 <div class="user-avatar" id="user-avatar">
                     <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar">
                 </div>
                 <button class="wallet-btn" id="wallet-address">
-                    <span>UQBQ...0pxV</span>
+                    <span>Your Wallet</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
@@ -46,70 +43,119 @@
         <!-- Filter Options -->
         <div class="filter-section">
             <div class="filter-row">
-                <div class="filter-category active">
-                    <img src="https://via.placeholder.com/40" alt="Category Icon" class="category-icon">
+                <div class="filter-category active" data-category="all">
+                    <div class="category-icon">
+                        <i class="fas fa-border-all"></i>
+                    </div>
                     <span>All</span>
                 </div>
-                <div class="filter-category">
-                    <img src="https://via.placeholder.com/40" alt="Category Icon" class="category-icon">
+                <div class="filter-category" data-category="silver">
+                    <div class="category-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
                     <span>Silver</span>
                 </div>
-                <div class="filter-category">
-                    <img src="https://via.placeholder.com/40" alt="Category Icon" class="category-icon">
+                <div class="filter-category" data-category="gold">
+                    <div class="category-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
                     <span>Gold</span>
                 </div>
-                <div class="action-icons">
-                    <button class="filter-action-btn"><i class="fas fa-sliders"></i></button>
-                    <button class="filter-action-btn"><i class="fas fa-share-alt"></i></button>
-                    <button class="filter-action-btn"><i class="fas fa-trash"></i></button>
-                    <button class="filter-action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                <div class="filter-category" data-category="premium">
+                    <div class="category-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <span>Premium</span>
                 </div>
             </div>
             <div class="filter-options">
-                <div class="filter-option">
-                    <div class="filter-label">Background</div>
-                    <div class="filter-value">All</div>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="filter-option">
+                <div class="filter-option" id="sort-option">
                     <div class="filter-label">Sort</div>
                     <div class="filter-value">Latest</div>
                     <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="filter-option">
-                    <div class="filter-label">Gift ID</div>
-                    <div class="filter-value">#</div>
-                </div>
-            </div>
-            <div class="filter-options">
-                <div class="filter-option">
-                    <div class="filter-label">Symbol</div>
+                <div class="filter-option" id="price-option">
+                    <div class="filter-label">Price</div>
                     <div class="filter-value">All</div>
                     <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="filter-option price-filter">
-                    <div class="filter-label">Price</div>
-                    <div class="price-range">
-                        <span>From</span>
-                        <span>To</span>
-                    </div>
-                    <i class="fas fa-chevron-down"></i>
+                <div class="search-option">
+                    <input type="text" placeholder="Search gifts..." id="search-input">
+                    <i class="fas fa-search"></i>
                 </div>
             </div>
         </div>
 
         <!-- Cart Display -->
-        <div class="cart-section">
+        <div class="cart-section" id="cart-section">
             <div class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
-                <div class="cart-indicator"></div>
+                <div class="cart-indicator" id="cart-indicator"></div>
             </div>
             <div class="cart-count" id="cart-count">0</div>
+            <button class="view-cart-btn" id="view-cart-btn">View Cart</button>
         </div>
 
-        <!-- Gift Grid -->
-        <div class="gift-grid" id="gift-grid">
-            <!-- Gift items will be added here by JavaScript -->
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Market View -->
+            <div class="content-view" id="market-view">
+                <h3 class="section-title">Available Gifts</h3>
+                <div class="gift-grid" id="market-grid"></div>
+            </div>
+
+            <!-- My Collections View -->
+            <div class="content-view" id="my-collections-view" style="display: none;">
+                <h3 class="section-title">My Collections</h3>
+                <div class="collections-container" id="my-collections-container"></div>
+            </div>
+
+            <!-- Add Collection View -->
+            <div class="content-view" id="add-collection-view" style="display: none;">
+                <h3 class="section-title">Create New Collection</h3>
+                <div class="add-collection-container">
+                    <div class="info-card">
+                        <h4>Create a Collection</h4>
+                        <p>Group your gifts together into collections that you can showcase or sell.</p>
+                        <p class="info-note">Fee: 0.1 TON</p>
+                    </div>
+                    <button class="primary-button" id="create-collection-btn">
+                        <i class="fas fa-plus"></i> Create Collection
+                    </button>
+                </div>
+            </div>
+
+            <!-- My Gifts View -->
+            <div class="content-view" id="my-gifts-view" style="display: none;">
+                <h3 class="section-title">My Gifts</h3>
+                <div class="gift-grid" id="my-gifts-grid"></div>
+            </div>
+
+            <!-- Cart View -->
+            <div class="content-view" id="cart-view" style="display: none;">
+                <h3 class="section-title">Shopping Cart</h3>
+                <div class="cart-items" id="cart-items"></div>
+                <div class="cart-summary" id="cart-summary">
+                    <div class="summary-row">
+                        <span>Total Items:</span>
+                        <span id="cart-total-items">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total Price:</span>
+                        <span id="cart-total-price">0.00 TON</span>
+                    </div>
+                    <button class="primary-button checkout-btn" id="checkout-btn">Checkout</button>
+                </div>
+            </div>
+
+            <!-- Details Views -->
+            <div class="content-view" id="gift-details-view" style="display: none;">
+                <div class="details-container" id="gift-details-container"></div>
+            </div>
+
+            <div class="content-view" id="collection-details-view" style="display: none;">
+                <div class="details-container" id="collection-details-container"></div>
+            </div>
         </div>
 
         <!-- Bottom Navigation -->
@@ -131,6 +177,34 @@
                 <span>My Gifts</span>
             </a>
         </nav>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="sort-modal">
+        <div class="modal-content">
+            <h3>Sort By</h3>
+            <div class="modal-options">
+                <div class="modal-option" data-value="latest">Latest</div>
+                <div class="modal-option" data-value="oldest">Oldest</div>
+                <div class="modal-option" data-value="price-high">Price: High to Low</div>
+                <div class="modal-option" data-value="price-low">Price: Low to High</div>
+            </div>
+            <button class="modal-close">Cancel</button>
+        </div>
+    </div>
+
+    <div class="modal" id="price-modal">
+        <div class="modal-content">
+            <h3>Price Range</h3>
+            <div class="modal-options">
+                <div class="modal-option" data-value="all">All Prices</div>
+                <div class="modal-option" data-value="under-1">Under 1 TON</div>
+                <div class="modal-option" data-value="1-5">1 - 5 TON</div>
+                <div class="modal-option" data-value="5-20">5 - 20 TON</div>
+                <div class="modal-option" data-value="over-20">Over 20 TON</div>
+            </div>
+            <button class="modal-close">Cancel</button>
+        </div>
     </div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
