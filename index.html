@@ -2,92 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift Collections</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Collectible Gifts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div id="app">
-        <header>
-            <div class="logo">Gift Collections</div>
-            <div class="search">
-                <input type="text" placeholder="Search collections...">
-                <button class="search-button">🔍</button>
-            </div>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Header with close and menu buttons -->
+        <header class="app-header">
+            <button class="icon-btn close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="app-title">Collectible Gifts Bot</div>
+            <button class="icon-btn menu-btn">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
         </header>
-        
-        <div class="tabs">
-            <button class="tab active" data-tab="explore">Explore</button>
-            <button class="tab" data-tab="my-collections">My Collections</button>
-            <button class="tab" data-tab="wallet">Wallet</button>
-        </div>
-        
-        <div class="content-area">
-            <div id="explore" class="tab-content active">
-                <div class="filters">
-                    <select id="type-filter">
-                        <option value="">All Types</option>
-                        <option value="Premium">Premium</option>
-                        <option value="Standard">Standard</option>
-                    </select>
-                    <select id="symbol-filter">
-                        <option value="">All Symbols</option>
-                        <option value="Heart">Heart</option>
-                        <option value="Star">Star</option>
-                    </select>
-                </div>
-                
-                <div class="collections-grid">
-                    <!-- Sample collections will go here -->
-                    <div class="collection-card">
-                        <img src="https://via.placeholder.com/150" alt="Sample Collection">
-                        <div class="collection-info">
-                            <h3>Premium Collection</h3>
-                            <p>5 gifts • 10 TON</p>
-                            <button class="view-button">View</button>
-                        </div>
-                    </div>
-                    
-                    <div class="collection-card">
-                        <img src="https://via.placeholder.com/150" alt="Sample Collection">
-                        <div class="collection-info">
-                            <h3>Special Edition</h3>
-                            <p>3 gifts • 5 TON</p>
-                            <button class="view-button">View</button>
-                        </div>
-                    </div>
-                </div>
+
+        <!-- Balance and User Info Section -->
+        <div class="balance-section">
+            <div class="balance-display">
+                <i class="fas fa-gem"></i>
+                <span class="balance-amount" id="balance-amount">0.000</span>
+                <button class="action-btn add-btn" id="add-funds-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="action-btn subtract-btn" id="subtract-funds-btn">
+                    <i class="fas fa-minus"></i>
+                </button>
             </div>
-            
-            <div id="my-collections" class="tab-content">
-                <div class="action-buttons">
-                    <button class="create-button">Create Collection</button>
+            <div class="user-info">
+                <div class="user-avatar" id="user-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar">
                 </div>
-                <div class="collections-grid">
-                    <!-- User's collections will be loaded here -->
-                    <p class="empty-message">You don't have any collections yet.</p>
-                </div>
-            </div>
-            
-            <div id="wallet" class="tab-content">
-                <div class="wallet-info">
-                    <h2>Your TON Balance</h2>
-                    <div class="balance">0.00 TON</div>
-                    <button class="deposit-button">Deposit TON</button>
-                    <button class="withdraw-button">Withdraw TON</button>
-                </div>
-                <div class="transaction-history">
-                    <h3>Transaction History</h3>
-                    <div class="transactions">
-                        <!-- Transactions will be loaded here -->
-                        <p class="empty-message">No transactions yet.</p>
-                    </div>
-                </div>
+                <button class="wallet-btn" id="wallet-address">
+                    <span>UQBQ...0pxV</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
         </div>
+
+        <!-- Filter Options -->
+        <div class="filter-section">
+            <div class="filter-row">
+                <div class="filter-category active">
+                    <img src="https://via.placeholder.com/40" alt="Category Icon" class="category-icon">
+                    <span>All</span>
+                </div>
+                <div class="filter-category">
+                    <img src="https://via.placeholder.com/40" alt="Category Icon" class="category-icon">
+                    <span>Silver</span>
+                </div>
+                <div class="filter-category">
+                    <img src="https://via.placeholder.com/40" alt="Category Icon" class="category-icon">
+                    <span>Gold</span>
+                </div>
+                <div class="action-icons">
+                    <button class="filter-action-btn"><i class="fas fa-sliders"></i></button>
+                    <button class="filter-action-btn"><i class="fas fa-share-alt"></i></button>
+                    <button class="filter-action-btn"><i class="fas fa-trash"></i></button>
+                    <button class="filter-action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+            </div>
+            <div class="filter-options">
+                <div class="filter-option">
+                    <div class="filter-label">Background</div>
+                    <div class="filter-value">All</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-option">
+                    <div class="filter-label">Sort</div>
+                    <div class="filter-value">Latest</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-option">
+                    <div class="filter-label">Gift ID</div>
+                    <div class="filter-value">#</div>
+                </div>
+            </div>
+            <div class="filter-options">
+                <div class="filter-option">
+                    <div class="filter-label">Symbol</div>
+                    <div class="filter-value">All</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="filter-option price-filter">
+                    <div class="filter-label">Price</div>
+                    <div class="price-range">
+                        <span>From</span>
+                        <span>To</span>
+                    </div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Display -->
+        <div class="cart-section">
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="cart-indicator"></div>
+            </div>
+            <div class="cart-count" id="cart-count">0</div>
+        </div>
+
+        <!-- Gift Grid -->
+        <div class="gift-grid" id="gift-grid">
+            <!-- Gift items will be added here by JavaScript -->
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" id="market-tab">
+                <i class="fas fa-store"></i>
+                <span>Market</span>
+            </a>
+            <a href="#" class="nav-item" id="my-collections-tab">
+                <i class="fas fa-layer-group"></i>
+                <span>My Collections</span>
+            </a>
+            <a href="#" class="nav-item" id="add-collection-tab">
+                <i class="fas fa-plus-square"></i>
+                <span>Add Collection</span>
+            </a>
+            <a href="#" class="nav-item" id="my-gifts-tab">
+                <i class="fas fa-gift"></i>
+                <span>My Gifts</span>
+            </a>
+        </nav>
     </div>
-    
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
