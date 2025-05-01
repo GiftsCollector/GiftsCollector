@@ -1,199 +1,400 @@
+:root {
+    --dark-bg: #0f1621;
+    --dark-surface: #17212b;
+    --dark-card: #232e3c;
+    --dark-border: #2d3b4d;
+    --text-primary: #ffffff;
+    --text-secondary: #8794a4;
+    --accent-color: #2ea6ff;
+    --negative-color: #eb5757;
+    --action-icon: #8794a4;
+    --button-radius: 8px;
+    --card-radius: 12px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-:root {
-    --tg-theme-bg-color: #1F1F1F;
-    --tg-theme-text-color: #FFFFFF;
-    --tg-theme-button-color: #2AABEE;
-    --tg-theme-button-text-color: #FFFFFF;
-    --tg-theme-secondary-bg-color: #272727;
 }
 
 body {
-    background-color: var(--tg-theme-bg-color);
-    color: var(--tg-theme-text-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
 }
 
-#app {
-    max-width: 600px;
+.dark-theme {
+    --bg-color: var(--dark-bg);
+    --surface-color: var(--dark-surface);
+    --card-color: var(--dark-card);
+}
+
+.app-container {
+    max-width: 100%;
     margin: 0 auto;
-    padding: 10px;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 58px; /* Space for bottom navigation */
 }
 
-header {
+/* Header Styles */
+.app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    margin-bottom: 15px;
+    padding: 10px 16px;
+    background-color: var(--dark-surface);
 }
 
-.logo {
+.app-title {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
-.search {
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-}
-
-.search input {
-    padding: 8px;
-    border-radius: 20px 0 0 20px;
-    border: none;
-    background-color: var(--tg-theme-secondary-bg-color);
-    color: var(--tg-theme-text-color);
-    width: 150px;
-}
-
-.search-button {
-    border-radius: 0 20px 20px 0;
-    padding: 8px 10px;
-    border: none;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
+    justify-content: center;
     cursor: pointer;
 }
 
-.tabs {
+/* Balance Section */
+.balance-section {
     display: flex;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #333;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: var(--dark-surface);
 }
 
-.tab {
-    padding: 10px 15px;
-    background: none;
+.balance-display {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.balance-display i {
+    color: var(--accent-color);
+    font-size: 18px;
+}
+
+.balance-amount {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.action-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     border: none;
-    color: var(--tg-theme-text-color);
-    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    font-size: 14px;
 }
 
-.tab.active {
-    opacity: 1;
-    border-bottom: 2px solid var(--tg-theme-button-color);
+.add-btn {
+    background-color: var(--accent-color);
+    color: white;
 }
 
-.tab-content {
-    display: none;
+.subtract-btn {
+    background-color: var(--dark-card);
+    color: var(--text-primary);
 }
 
-.tab-content.active {
-    display: block;
-}
-
-.filters {
+.user-info {
     display: flex;
-    margin-bottom: 15px;
-    gap: 10px;
+    align-items: center;
+    gap: 8px;
 }
 
-.filters select {
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--tg-theme-secondary-bg-color);
-    color: var(--tg-theme-text-color);
-}
-
-.collections-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.collection-card {
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 10px;
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     overflow: hidden;
 }
 
-.collection-card img {
+.user-avatar img {
     width: 100%;
-    height: 120px;
+    height: 100%;
     object-fit: cover;
 }
 
-.collection-info {
-    padding: 10px;
-}
-
-.collection-info h3 {
+.wallet-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 6px 12px;
     font-size: 14px;
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
 }
 
-.collection-info p {
+/* Filter Section */
+.filter-section {
+    padding: 12px 16px;
+    background-color: var(--dark-surface);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.filter-row {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    padding-bottom: 5px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.filter-row::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.filter-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-right: 16px;
+    min-width: 50px;
+    cursor: pointer;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--dark-card);
+    object-fit: cover;
+}
+
+.filter-category span {
     font-size: 12px;
-    opacity: 0.7;
-    margin-bottom: 8px;
+    color: var(--text-secondary);
 }
 
-.view-button {
+.filter-category.active span {
+    color: var(--text-primary);
+}
+
+.action-icons {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.filter-action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--dark-card);
+    color: var(--action-icon);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.filter-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.filter-option {
+    flex: 1;
+    background-color: var(--dark-card);
+    border-radius: var(--button-radius);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.filter-label {
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+.filter-value {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-right: 4px;
+}
+
+.price-range {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Cart Section */
+.cart-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: var(--dark-bg);
+}
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.cart-indicator {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    top: 0;
+    right: 0;
+}
+
+.cart-count {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Gift Grid */
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--dark-bg);
+}
+
+.gift-card {
+    background-color: var(--dark-card);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+.gift-image {
     width: 100%;
-    padding: 6px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.gift-buttons {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gift-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(35, 46, 60, 0.8);
+    color: white;
     border: none;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.action-buttons {
-    margin-bottom: 15px;
+.gift-details {
+    padding: 8px;
 }
 
-.create-button {
-    padding: 8px 15px;
-    border: none;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    border-radius: 5px;
-    cursor: pointer;
+.gift-name {
+    font-size: 14px;
+    margin-bottom: 2px;
 }
 
-.wallet-info {
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+.gift-id {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.gift-price {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 8px 0;
     text-align: center;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
-.balance {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 15px 0;
+.gift-price i {
+    font-size: 14px;
 }
 
-.deposit-button, .withdraw-button {
-    padding: 10px 15px;
-    border: none;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    background-color: var(--dark-surface);
+    border-top: 1px solid var(--dark-border);
+    height: 58px;
 }
 
-.transaction-history {
-    background-color: var(--tg-theme-secondary-bg-color);
-    border-radius: 10px;
-    padding: 15px;
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    gap: 4px;
 }
 
-.transaction-history h3 {
-    margin-bottom: 10px;
+.nav-item.active {
+    color: var(--accent-color);
 }
 
-.empty-message {
-    text-align: center;
-    padding: 20px;
-    opacity: 0.7;
+.nav-item i {
+    font-size: 20px;
+}
+
+.nav-item span {
+    font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 350px) {
+    .gift-grid {
+        grid-template-columns: 1fr;
+    }
 }
